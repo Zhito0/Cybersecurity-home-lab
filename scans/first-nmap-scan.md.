@@ -1,0 +1,48 @@
+First Nmap Scan: Ubuntu Web Server
+
+Objective
+
+Identify open TCP ports on my Ubuntu virtual machine using Nmap from Kali Linux.
+
+Lab Setup
+
+* Testing machine: Kali Linux
+* Target machine: Ubuntu Linux
+* Target IP: 192.168.56.2
+* Tool: Nmap 7.94SVN
+* Network: Isolated VirtualBox host-only lab network
+
+Command Used
+
+nmap 192.168.56.2
+
+Results
+
+Port	State	Service
+80/tcp	Open	HTTP
+
+Nmap reported that the host was up and that 999 of the 1,000 commonly scanned TCP ports were closed.
+
+Analysis
+
+The open TCP port 80 is consistent with the Apache2 web server running on Ubuntu. This confirms that the web server is reachable from Kali Linux over the lab network.
+
+The remaining scanned ports were reported as closed. This result applies to the ports and scan conditions used in this exercise; it does not establish that every possible service or port on the system is secure.
+
+What I Learned
+
+* How to perform a basic Nmap TCP port scan.
+* How to identify open and closed ports.
+* How to connect a discovered network service to the application running on the target machine.
+* Why network scanning results are useful for security assessment.
+
+Next Steps
+
+* Perform service-version detection with nmap -sV.
+* Compare scan results with Ubuntu’s running services.
+* Monitor Apache access logs during testing.
+* Investigate basic server-hardening measures.
+
+Authorization
+
+The scan targeted my own Ubuntu virtual machine within my controlled home lab.
