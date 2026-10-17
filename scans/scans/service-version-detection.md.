@@ -1,0 +1,49 @@
+Exercise 2: Nmap Service-Version Detection
+
+Objective
+
+Identify the service and software version exposed by my Ubuntu web server using Nmap from Kali Linux.
+
+Lab Environment
+
+* Testing machine: Kali Linux
+* Target machine: Ubuntu Linux
+* Target IP: 192.168.56.2
+* Tool: Nmap 7.94SVN
+* Target service: Apache2 web server
+
+Command Used
+
+nmap -sV 192.168.56.2
+
+Results
+
+Port	State	Service	Detected version
+80/tcp	Open	HTTP	Apache httpd 2.4.66 (Ubuntu)
+
+Nmap reported that the host was up and that 999 of the 1,000 commonly scanned TCP ports were closed.
+
+Analysis
+
+Nmap identified an HTTP service on TCP port 80 and fingerprinted it as Apache httpd 2.4.66 (Ubuntu).
+
+This is consistent with the Apache2 web server installed on my Ubuntu virtual machine. The result demonstrates how service-version detection provides more information than a basic port scan.
+
+Version detection is an estimate based on network responses. Further verification on the target machine would be needed to confirm the installed package version.
+
+What I Learned
+
+* How to use the Nmap -sV option.
+* How to identify services exposed on open ports.
+* How service fingerprints can help with security assessment.
+* Why software versions should be checked for available security updates.
+
+Next Steps
+
+* Compare the detected version with Ubuntu’s installed Apache package.
+* Observe Apache access logs while sending an HTTP request from Kali.
+* Learn basic web server hardening.
+
+Authorization
+
+This scan was performed against my own Ubuntu virtual machine in my controlled home lab.
