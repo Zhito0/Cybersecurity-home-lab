@@ -1,0 +1,58 @@
+Exercise 13: API Response Inspection
+
+Objective
+
+Inspect HTTP responses and API-related communication from OWASP Juice Shop using Firefox Developer Tools.
+
+Lab Environment
+
+* Testing machine: Kali Linux
+* Target machine: Ubuntu Linux
+* Application: OWASP Juice Shop
+* Target address: http://192.168.56.2:3000
+
+Procedure
+
+1. Opened OWASP Juice Shop in Firefox on Kali Linux.
+2. Opened Developer Tools and selected the Network tab.
+3. Used the Fetch/XHR filter to observe application requests.
+4. Searched for APPLE using the application’s product search.
+5. Inspected request headers, response details, and request payload information.
+6. Examined a request to the /socket.io/ endpoint.
+
+Observations
+
+* The product search displayed matching products.
+* The search-related request showed HTTP status 304 Not Modified.
+* Other observed requests returned HTTP status 200 OK.
+* A request to /socket.io/ included EIO=4 and transport=polling parameters.
+* The response for the selected Socket.IO polling request contained the number 6.
+* Firefox displayed “No payload for this request” for a selected request.
+* Response and request details varied depending on which network request was selected.
+
+Analysis
+
+HTTP status 200 OK indicates a successful HTTP response. A 304 Not Modified response indicates that a cached representation can be reused following cache validation.
+
+The /socket.io/ endpoint is associated with Socket.IO communication. The EIO=4 parameter identifies Engine.IO protocol version 4, while transport=polling indicates polling transport.
+
+The meaning of the numeric response depends on the specific protocol message and request context; it should not automatically be interpreted as a product count.
+
+“No payload for this request” indicates that the selected request did not expose a request body in Firefox’s Request panel. This is common for requests that do not send a body.
+
+Security Considerations
+
+* Testing was limited to the intentionally vulnerable Juice Shop application in my home lab.
+* No exploitation or request manipulation was performed.
+* The application remains restricted to the isolated lab network.
+* Session identifiers, including Socket.IO sid values, should be redacted from public screenshots and reports.
+
+Conclusion
+
+Successfully inspected application network requests, HTTP status codes, response content, and Socket.IO polling metadata using Firefox Developer Tools. This exercise improved understanding of HTTP responses and browser-to-server communication.
+
+Evidence
+
+* Screenshot of the Network panel showing observed requests and status codes.
+* Screenshot of the Socket.IO request details, with session identifiers redacted.
+* Screenshot of the response content where appropriate.
